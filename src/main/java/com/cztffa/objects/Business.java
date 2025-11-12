@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 public class Business {
 
 	private String businessName;
-
+    private String dbaname;
+    private String year;
 	private String businessType;
 
 	private String phoneNumber;

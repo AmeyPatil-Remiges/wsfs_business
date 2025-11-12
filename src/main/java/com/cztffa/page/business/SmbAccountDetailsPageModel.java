@@ -13,19 +13,10 @@ public class SmbAccountDetailsPageModel {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = SmbAccountDetailsPageXpath.BUSINESSCDINFO)
-    public WebElement BusinessCdInfo;
+//    @FindBy(xpath = SmbAccountDetailsPageXpath.BUSINESSDEBITCARD)
+//    public WebElement BusinessDebitCard;
     
-    @FindBy(xpath = SmbAccountDetailsPageXpath.CERTIFICATETERM)
-    public WebElement certificateTerm;
-    
-    @FindBy(xpath = SmbAccountDetailsPageXpath.CERTIFICATETERMSELECT)
-    public WebElement certificateTermSelect;
-    
-    @FindBy(xpath = SmbAccountDetailsPageXpath.AMOUNTTOENTER)
-    public WebElement amountToEnter;
-    
-    @FindBy(xpath = SmbAccountDetailsPageXpath.ACCOUNTDETAILSNEXTBUTON)
-    public WebElement accountDetailsNextButon;
+    @FindBy(xpath = SmbAccountDetailsPageXpath.ACCOUNTDETAILSNEXTBUTTON)
+    public WebElement AccountDetailsNextButton;
     
 }

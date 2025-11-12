@@ -68,6 +68,9 @@ public class Person {
 	private Validation validation;
 	
 	private String ownershipPercentage;
-	
+    private AccountDetails accountDetails;
 	private String submissionId;
+    public String stateIssued;
+
+    public String memberType;
 }

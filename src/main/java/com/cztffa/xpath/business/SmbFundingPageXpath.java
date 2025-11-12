@@ -1,45 +1,53 @@
 package com.cztffa.xpath.business;
 
 public class SmbFundingPageXpath {
-    public static final String FUNDINGTOGGLEBUTTON = "//label[contains(text(),'Do you want to fund now?')]/ancestor::div[@class='tf-checkbox-layout tf-left-label ng-star-inserted']//div[@class='tf-switch-input-wrapper']//input";
-    public static final String SOURCEOFFUNDDRAPPLY = "//tf-dropdown[@t-model='Type__c']/descendant::input";
-    public static final String SOURCEOFFUNDOPAPPLY = "//div[@class='dropdown-item ng-star-inserted'][contains(text(),'External')]";
-    public static final String SOURCEOFFUNDCCAPPLY = "//div[@class='dropdown-item ng-star-inserted'][contains(text(),'Credit')]";
-    public static final String SOURCEOFFUNDDCAPPLY = "//div[@class='dropdown-item ng-star-inserted'][contains(text(),'Debit')]";
-    public static final String FUNDINGNEXTBUTTON = "//button[@class='btn btn-primary float-end tf-step-action-next']";
-    public static final String FLOATERMSGVALIDATION = "//div[@class='tf-toast-message']";
-    public static final String BTNPLAID = "//button[contains(text(),' Verify with ')]";
-    public static final String FRAMEPLAID = "//iframe[@id='plaid-link-iframe-1']";
-    public static final String FRAMECARDNUMBER = "//*[@title='CARD NUMBER']";
-    public static final String FRAMECARDNAME = "//*[@title='CARD NAME']";
-    public static final String FRAMECARDDATE = "//*[@title='CARD DATE']";
-    public static final String FRAMECARDCVV = "//*[@title='CARD CVV']";
-    public static final String FRAMECARDZIP = "//*[@title='CARD POSTAL CODE']";
-    public static final String FRAMECARDSTREET = "//*[@title='CARD STREET ADDRESS']";
-    public static final String DRPACNUM = "//tf-dropdown[@t-model='accountKey']/descendant::input";
-    public static final String OPTACNUM = "//div[@class='dropdown-item ng-star-inserted'][contains(text(),'Plaid Checking')]";
-    public static final String FLAGTRANTOACC = "//label[.=' How much would you like to transfer to your account? ']";
-    public static final String ACKNOWLEDGEPALIDTOGGLE = "//label[contains(text(),'I acknowledge that I want to use Plaid to verify my external account')]//ancestor::div[@class='tf-checkbox-layout ng-star-inserted']//input";
-    public static final String AUTHORIZEPALIDTOGGLE = "//label[contains(text(),'I authorize the institution to perform Electronic Funds Transfer')]//ancestor::div[@class='tf-checkbox-layout ng-star-inserted']//input";
-    public static final String BTNAUTHCONTINUE = "//span[.='Continue']";
-    public static final String BTNAUTHCONTINUEGUEST = "//span[.='Continue as guest']";
-    public static final String BTNPAY = "//*[@id='clover-btn']";
-    public static final String CARDNUMBER = "//input[@name='cardnumber' and @placeholder='Card Number']";
-    public static final String CARDHOLDER = "//input[@name='billingName' and @placeholder='Card Holder Name']";
-    public static final String CARDEXPIRY = "//input[@name='cc-exp' and @placeholder='MM/YY']";
-    public static final String CVV = "//input[@name='cvc' and @placeholder='CVV']";
-    public static final String ZIPCODE = "//input[@name='postal' and @placeholder='Zip']";
-    public static final String STREET = "//input[@name='street-address' and @placeholder='Street Address']";
+    public static final String FUNDINGAMOUNT = "//tf-money[@t-model='Submission__c.Applications__r.%s.Amount__c']";
+    public static final String FUNDINGTYPE = "//tfcz-funding[@t-model='Submission__c']//tf-dropdown[@t-model='CZSubType__c']";
+    public static final String TERMVALUE = "//tf-dropdown[@t-model='TermCode__c']//input";
+    public static final String PLAID = "//button[normalize-space()='Verify with']";
+    public static final String CONTINUEASGUEST = "//button[normalize-space()='Continue as guest']";
+    public static final String BTNLOGIN = "//button[normalize-space()='Continue to login']";
     public static final String TXTUSERNAME = "//input[@placeholder='Username']";
+
     public static final String TXTPASSWORD = "//input[@placeholder='Password']";
     public static final String BTNAUTHSUBMIT = "//button[normalize-space()='Sign in']";
     public static final String BTNAUTHCONTINUEAFTER = "//button[normalize-space()='Get code']";
     public static final String BTNAUTHCONTINUEAFTERSUCCESS = "//button[normalize-space()='Submit']";
-    public static final String BTNLOGIN = "//button[normalize-space()='Continue to login']";
-    public static final String CHECKBOX = "//div[contains(text(),'Plaid Checking')]";
-    public static final String BTNSUBMIT = "//button[normalize-space()='Continue']";
+    public static final String PLAIDCHECKINGCHECKBOX = "//div[contains(text(),'Plaid Checking')]";
+    public static final String BTNCONTINUE = "//button[normalize-space()='Continue']";
+    public static final String BTNPAYPAL = "//div[@class='paypal-button']";
     public static final String CHECKBOXTERMS = "//div[contains(text(),'I have read and accept the Terms and Conditions')]";
     public static final String BTNSUBMITCONFIRM = "//button[normalize-space()='Connect account information']";
-    public static final String BTNCONTINUE = "//button[normalize-space()='Finish without saving']";
-    public static final String PLAIDINSTUTIONNAME = "//button[@aria-label='%s']";
+    public static final String BTNCONTINUE_1 = "//button[normalize-space()='Finish without saving']";
+    public static final String FUNDDISC = "//tf-checkbox[@t-model='Accepted__c']";
+    public static final String FUNDINGNEXTBUTTON = "//button[normalize-space()='Next']";
+    public static final String BTNCONTINUE_3 = "//button[normalize-space()='Continue']";
+    public static final String CHECKBOXTERMS_1 = "//tf-checkbox//input";
+    public static final String PAYPALID = "//div//input[@placeholder='Email or mobile number']";
+    public static final String PAYPALPWD = "//div//input[@placeholder='Password']";
+    public static final String PAYPALIDNXT = "//button[normalize-space()='Next']";
+    public static final String PAYPALGN = "//button[normalize-space()='Log In']";
+    public static final String CMPURCH = "//button[normalize-space()='Complete Purchase']";
+    public static final String FUNDINGSAVEMYPROGRESS = "//button[normalize-space()='Save My Progress']";
+
 }
+
+
+//    public static final String FUNDINGAMOUNT = "//tf-money[@t-model='Submission__c.Applications__r.%s.Amount__c']";
+//    public static final String FUNDINGTYPE = "//tfcz-funding[@t-model='Submission__c']//tf-dropdown[@t-model='CZSubType__c']";
+//    public static final String PLAID = "//button[normalize-space()='Verify with']";
+//    public static final String CONTINUEASGUEST = "//button[normalize-space()='Continue as guest']";
+//    public static final String BTNLOGIN = "//button[normalize-space()='Continue to login']";
+//    public static final String TXTUSERNAME = "//input[@placeholder='Username']";
+//    public static final String TXTPASSWORD = "//input[@placeholder='Password']";
+//    public static final String BTNAUTHSUBMIT = "//button[normalize-space()='Sign in']";
+//    public static final String BTNAUTHCONTINUEAFTER = "//button[normalize-space()='Get code']";
+//    public static final String BTNAUTHCONTINUEAFTERSUCCESS = "//button[normalize-space()='Submit']";
+//    public static final String PLAIDCHECKINGCHECKBOX = "//div[contains(text(),'Plaid Checking')]";
+//    public static final String BTNCONTINUE = "//button[normalize-space()='Continue']";
+//    public static final String CHECKBOXTERMS = "//div[contains(text(),'I have read and accept the Terms and Conditions')]";
+//    public static final String BTNSUBMITCONFIRM = "//button[normalize-space()='Connect account information']";
+//    public static final String BTNCONTINUE_1 = "//button[normalize-space()='Finish without saving']";
+//    public static final String FUNDDISC = "//tf-checkbox[@t-model='Accepted__c']";
+//    public static final String FUNDINGNEXTBUTTON = "//button[normalize-space()='Next']";
+//}

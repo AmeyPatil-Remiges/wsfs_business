@@ -1,5 +1,6 @@
 package com.cztffa.page.business;
 import com.cztffa.xpath.business.SmbPersonalInfoPageXpath;
+import com.cztffa.xpath.consumer.PersonalInfoPageXpath;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -12,123 +13,152 @@ public class SmbPersonalInfoPageModel {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    public String selectionYes = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-declaration[@t-model='Party__r']//input[@value='Yes']";
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.PROCEEDWITHOUTPREFILLBTN)
-    public WebElement proceedWithoutPrefillBtn;
-    
     public String firstName = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Party__r.FirstName__c']/descendant::input";
-    
+
     public String middleName = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Party__r.MiddleName__c']/descendant::input";
-    
+
     public String lastName = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Party__r.LastName__c']/descendant::input";
-    
-    public String dateOfBirth = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-date[@t-model='Party__r.BirthDate__c']//input";
-    
-    public String citizenship = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Party__r.Citizenship__c']/descendant::input";
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.CITIZENSHIPCITIZENOPTAPPLY)
-    public WebElement citizenshipCitizenOptApply;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.CITIZENSHIPALIENAPPLY)
-    public WebElement citizenshipAlienApply;
-    
-    public String citizenshipCountry = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Party__r.CountryOfCitizenship__c']//input";
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.CITIZENSHIPCOUNTRYAPPLY)
-    public WebElement citizenshipCountryApply;
-    
-    public String willingForeign = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Party__r.CZAffiliatedWithForeignGoverment__c']//input";
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.WILLINGFREIGNAPPLY)
-    public WebElement willingFreignApply;
-    
-    public String streetAddress1 = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-address[@t-model='Party__r.AddressXrefs__r.0.Address__r']//tf-input[@t-model='Line1__c']/descendant::input";
-    
-    public String addressText = "(//div[contains(text(),'%s')])[1]";
-    
+
+    public String streetAddress1 = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tfcz-address[@t-model='Party__r.AddressXrefs__r.0.Address__r']//tf-input[@t-model='Line1__c']/descendant::input";
+
     public String city = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='City__c']//input";
-    
+
     public String state = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='State__c']/descendant::input";
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.STATEOPTAPPLY)
-    public WebElement stateOptApply;
-    
+
     public String zip = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='ZipCode__c']//input";
-    
-    public String prefferedContact = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Party__r.PreferredContactMethod__c']/descendant::input";
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.PREFERREDCONTACTMOBILEAPPLY)
-    public WebElement preferredContactMobileApply;
-    
-    public String mobilePhone = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-phone[@t-model='Party__r.PrimaryPhone__c']//input";
-    
-    public String email = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-email[@t-model='Party__r.PrimaryEmail__c']//input";
-    
-    public String employment = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Party__r.Employments__r.0.Type__c']/descendant::input";
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.EMPLOYMENTEMPLOYEDAPPLY)
-    public WebElement employmentEmployedApply;
-    
-    public String employer = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Party__r.Employments__r.0.EmployerName__c']//input";
-    
-    public String occupation = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-ssn[@t-model='Party__r.NationalIdentifierValue__c']//input";
-    
-    public String ssn = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-ssn[@t-model='Party__r.NationalIdentifierValue__c']//input";
-    
-    public String idType = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Type__c']/descendant::input";
-    
-    public String idNumber = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='IdentificationNumber__c']//input";
-    
-    public String securityWord = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Party__r.CZSecurityWord__c']//input";
-    
-    public String issueDate = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-date[@t-model='IssueDate__c']//input";
-    
-    public String expiryDate = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-date[@t-model='ExpirationDate__c']//input";
-    
-    public String stateIssued = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='IssuingState__c']//input";
-    
-    public String countryIssued = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='IssuingCountry__c']//input";
-    
-    public String selectRelation = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='RelationCode__c']//input";
-    
-    public String getRelationionshipOfPerson = "//div[@class='dropdown-item ng-star-inserted'][contains(text(),'%s')]";
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.IDTYPEMILITARYAPPLY)
-    public WebElement idTypeMilitaryApply;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.IDTYPEDRIVERLICENCEAPPLY)
-    public WebElement idTypeDriverLicenceApply;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.IDTYPESTATEIDAPPLY)
-    public WebElement idTypeStateIdApply;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.IDTYPEPASSPORTAPPLY)
-    public WebElement idTypePassportApply;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.IDTYPERESIDENTALIENAPPLY)
-    public WebElement idTypeResidentAlienApply;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.PERSONALINFONEXTBUTON)
-    public WebElement personalInfoNextButon;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.ADDADDITIONALAPPLICANTBUTTON)
+
+    public String phoneNumber = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-phone[@t-model='Party__r.PrimaryPhone__c']";
+
+    public String workPhone = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-phone[@t-model='Party__r.SecondaryPhone__c']/descendant::input";
+
+    public String email = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-email[@t-model='Party__r.PrimaryEmail__c']/descendant::input";
+
+    public String employment = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Party__r.Incomes__r.0.Employment__r.Type__c']";
+
+    public String occupation = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Party__r.Incomes__r.0.Employment__r.Occupation__c']";
+
+    public String PrefferedId = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Identifications__r.0.Type__c']/descendant::input";
+
+    public String idNumber = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Identifications__r.0.IdentificationNumber__c']//input";
+
+    public String stateIssued = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Identifications__r.0.IssuingState__c']/descendant::input";
+
+    public String issueDate = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-date[@t-model='Identifications__r.0.IssueDate__c']//input";
+
+    public String expiryDate = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-date[@t-model='Identifications__r.0.ExpirationDate__c']//input";
+
+    public String dateOfBirth = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-date[@t-model='BirthDate__c']//input";
+
+    public String ssn = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-ssn[@t-model='NationalIdentifierValue__c']//input";
+
+    public String IamNotSubjectTo = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-checkbox[@t-model='Accepted__c']";
+
+    public String IsPEPPresent = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-radio-group[@t-model='Is_PEP_Present']";
+
+    public String PEPMemberType = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='PEP_Member_Type']";
+
+//    public String APlastname = "//tf-input[@t-model=/'LastName__c/']";
+//    public String APssn = "//tf-input[@t-model=/'Last4NationalIdentifierValue__c/']";
+//    public String APemail = "//tf-input[@t-model='PrimaryEmail__c']";
+
+
+//    @FindBy(xpath = PersonalInfoPageXpath.APLASTNAME)
+//    public WebElement APlastname;
+//
+//    @FindBy(xpath = PersonalInfoPageXpath.APSSN)
+//    public WebElement APssn;
+//
+//    @FindBy(xpath = PersonalInfoPageXpath.APEMAIL)
+//    public WebElement APemail;
+
+    @FindBy(xpath = PersonalInfoPageXpath.ADDADDITIONALAPPLICANTBUTTON)
     public WebElement addAdditionalApplicantButton;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.STATEAPPLY)
-    public WebElement stateApply;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.SECURITYWORDERROR)
-    public WebElement securityWordError;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.SSNERROR)
-    public WebElement ssnError;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.RELATIONSELECT)
-    public WebElement relationSelect;
-    
-    @FindBy(xpath = SmbPersonalInfoPageXpath.PERCENTAGE)
-    public WebElement percentage;
+
+//    @FindBy(xpath = PersonalInfoPageXpath.IamNotSubjectTo)
+//    public WebElement IamNotSubjectTo;
+
+    //    @FindBy(xpath = PersonalInfoPageXpath.IsPEPPresent)
+//    public WebElement IsPEPPresent;
+    @FindBy(xpath = PersonalInfoPageXpath.PERSONALINFONEXTBUTON)
+    public WebElement personalInfoNextButon;
+
+    @FindBy(xpath = PersonalInfoPageXpath.APLOGIN)
+    public WebElement apLogin;
+
+    @FindBy(xpath = PersonalInfoPageXpath.SAVE)
+    public WebElement save;
+
+    @FindBy(xpath = PersonalInfoPageXpath.SAVEMYPROGRESS)
+    public WebElement saveMyProgress;
+
+    @FindBy(xpath = PersonalInfoPageXpath.SAVEMODALCONTINUEBUTTON)
+    public WebElement saveModalContinueButton;
+
+    @FindBy(xpath = PersonalInfoPageXpath.CANCELAPPLICATION)
+    public WebElement cancelApplication;
+
+    @FindBy(xpath = PersonalInfoPageXpath.CANCELMODALBUTTON)
+    public WebElement cancelModalButton;
+
+    @FindBy(xpath = PersonalInfoPageXpath.CONTINUEBTN1)
+    public WebElement continueBtn1;
+
+    public String addressText = "//div[contains(text(),'%s')]";
+    public String stateText = "//div[contains(text(),'%s')]";
+    public String MemberText = "//div[contains(text(),'%s')]";
+
+
+
+//    public String prefix = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Party__r.Prefix__c']/descendant::input";
+//
+//    public String middleName = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Party__r.MiddleName__c']/descendant::input";
+//
+//    public String suffix = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Party__r.Suffix__c']/descendant::input";
+//
+//    public String streetAddress1 = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Line1__c']/descendant::input";
+//
+//    public String city = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='City__c']/descendant::input";
+//
+//    public String state = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='State__c']/descendant::input";
+//
+//    public String zip = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='ZipCode__c']/descendant::input";
+//
+//    public String years = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-number[@t-model='Party__r.AddressXrefs__r.0.PeriodInYears__c']/descendant::input";
+//
+//    public String idType = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Identifications__r.0.Type__c']/descendant::input";
+//
+//    public String idNumber = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-input[@t-model='Identifications__r.0.IdentificationNumber__c']/descendant::input";
+//
+//    public String stateIssued = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='Identifications__r.0.IssuingState__c']/descendant::input";
+//
+//    public String issueDate = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-date[@t-model='Identifications__r.0.IssueDate__c']/descendant::input";
+//
+//    public String ssn = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-ssn[@t-model='NationalIdentifierValue__c']/descendant::input";
+//
+//    public String expiryDate = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-date[@t-model='Identifications__r.0.ExpirationDate__c']/descendant::input";
+//
+//    public String dateOfBirth = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-date[@t-model='BirthDate__c']/descendant::input";
+//
+//    @FindBy(xpath = SmbPersonalInfoPageXpath.ISPEPPRESENT)
+//    public WebElement IsPEPPresent;
+//
+//    public String PEPMemberType = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-dropdown[@t-model='PEP_Member_Type']/descendant::input";
+//
+//    @FindBy(xpath = SmbPersonalInfoPageXpath.ADDADDITIONALAPPLICANTBUTTON)
+//    public WebElement addAdditionalApplicantButton;
+//
+//    public String IsApplicantPresent = "//tf-expansion-panel[@t-model='Submission__c.PartyXrefs__r.%s']//tf-checkbox[@t-model='IsPresent__c']/descendant::input";
+//
+//    @FindBy(xpath = SmbPersonalInfoPageXpath.REMOVEPERSON)
+//    public WebElement removePerson;
+//
+//    @FindBy(xpath = SmbPersonalInfoPageXpath.REMOVEBUTTON)
+//    public WebElement removeButton;
+//
+//    @FindBy(xpath = SmbPersonalInfoPageXpath.PERSONALINFONEXTBUTON)
+//    public WebElement personalInfoNextButon;
+//
+//    @FindBy(xpath = SmbPersonalInfoPageXpath.CONTINUEBTN1)
+//    public WebElement continueBtn1;
     
 }

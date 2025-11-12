@@ -36,6 +36,16 @@ public class SmbBusinessPageStepDefinition {
         this.smbReviewPage=smbReviewPage;
     }
 
+
+
+
+    @And("^: I should navigate to business details page$")
+    public void navigateToBusinesslDetailsPage() throws Throwable {
+        smbReviewPage.waitForSpinnerToDisappear();
+        log.info(" i am on business info page");
+        assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("Business"));
+        log.info(" business info page validated");
+    }
     @When(": I provide the below business details for {string}")
     public void businessDetails(String submissionId) throws Throwable {
 
@@ -58,7 +68,6 @@ public class SmbBusinessPageStepDefinition {
             }
         }
     }
-
     @Then("^: I click on business details next button$")
     public void clickBusinesslDetailNextButton() throws Throwable {
         smbReviewPage.waitForSpinnerToDisappear();
@@ -69,12 +78,4 @@ public class SmbBusinessPageStepDefinition {
         smbReviewPage.waitForSpinnerToDisappear();
     }
 
-
-    @And("^: I should navigate to business details page$")
-    public void navigateToBusinesslDetailsPage() throws Throwable {
-        smbReviewPage.waitForSpinnerToDisappear();
-        log.info(" i am on business info page");
-        assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("Business"));
-        log.info(" business info page validated");
-    }
 }

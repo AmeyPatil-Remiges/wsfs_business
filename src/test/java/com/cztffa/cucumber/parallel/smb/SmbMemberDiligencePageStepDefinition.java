@@ -45,17 +45,6 @@ public class SmbMemberDiligencePageStepDefinition {
         browserActions.clickButton(seleniumdriver, smbReviewPage.getMemberDiligencePageModel().personalInfoNextButon);
     }
 
-    @Then(": I close promotion close button for smb")
-    public void iClosePromotionCloseButtonForSmb() throws InterruptedException {
-        smbReviewPage.waitForSpinnerToDisappear();
-        try {
-            smbReviewPage.wait(smbReviewPage.getMemberDiligencePageModel().closeButton);
-            browserActions.scrollToWebElement(smbReviewPage.getSeleniumdriver(), smbReviewPage.getMemberDiligencePageModel().closeButton);
-            smbReviewPage.waitWithSpinner(smbReviewPage.getMemberDiligencePageModel().closeButton);
-            browserActions.clickButton(seleniumdriver, smbReviewPage.getMemberDiligencePageModel().closeButton);
-        } catch (Exception ex) {
-            log.error("failed to close the close button");
-        }
-    }
+
 
 }

@@ -24,7 +24,18 @@ public class SmbRelationPageStepDefinition {
         this.browserActions = smbReviewPage.browserActions;
         this.smbReviewPage=smbReviewPage;
     }
-
+    @Then(": I close promotion close button for smb")
+    public void iClosePromotionCloseButtonForSmb() throws InterruptedException {
+        smbReviewPage.waitForSpinnerToDisappear();
+        try {
+            smbReviewPage.wait(smbReviewPage.getMemberDiligencePageModel().closeButton);
+            browserActions.scrollToWebElement(smbReviewPage.getSeleniumdriver(), smbReviewPage.getMemberDiligencePageModel().closeButton);
+            smbReviewPage.waitWithSpinner(smbReviewPage.getMemberDiligencePageModel().closeButton);
+            browserActions.clickButton(seleniumdriver, smbReviewPage.getMemberDiligencePageModel().closeButton);
+        } catch (Exception ex) {
+            log.error("failed to close the close button");
+        }
+    }
     @And("^: I should see the relations page$")
     public void navigateToRelationsPage() throws Throwable {
         smbReviewPage.letSpinnerDisappear();
@@ -35,6 +46,6 @@ public class SmbRelationPageStepDefinition {
     @Then("^: I click on relations page next button$")
     public void clickRelationsDetailNextButton() throws Throwable {
         smbReviewPage.letSpinnerDisappear();
-        smbReviewPage.clickRelationsDetailNextButtonHelper();
+//        smbReviewPage.clickRelationsDetailNextButtonHelper();
     }
 }

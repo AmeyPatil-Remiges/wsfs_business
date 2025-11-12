@@ -9,9 +9,11 @@ import com.cztffa.objects.Validation;
 import com.cztffa.page.review.SmbReviewPage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
@@ -22,7 +24,6 @@ import java.util.Map;
 import static org.junit.Assert.assertTrue;
 
 @Slf4j
-
 public class SmbPersonalPageStepDefinition {
     private SeleniumDriver seleniumdriver;
     private BrowserActions browserActions;
@@ -35,7 +36,16 @@ public class SmbPersonalPageStepDefinition {
         this.browserActions = smbReviewPage.browserActions;
         this.smbReviewPage=smbReviewPage;
     }
-
+    @Then("^: I should navigate to getting started page for smb$")
+    public void ishouldNavigateToGettingStartedPageForSmb() throws Throwable {
+        if (seleniumdriver.getWebDriver().getPageSource().contains("New Customer")) {
+            smbReviewPage.waitForVisibility("//*[contains(text(),'New Customer')]");
+            assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("New Customer"));
+            log.info("On getting started page");
+            Thread.sleep(1000);
+            //smbReviewPage.spinner();
+        }
+    }
     @When(": I provide the following details for smb for {string}")
     public void iProvideTheFollowingDetailsForSmb(String submissionId) throws InterruptedException, JsonProcessingException {
         log.info("Before filling the details");
@@ -56,6 +66,51 @@ public class SmbPersonalPageStepDefinition {
         }
     }
 
+    @And(": I click on start Application for smb")
+    @SneakyThrows
+    public void iClickOnStartApplicationForSmb() {
+        log.info("after start button  click");
+        smbReviewPage.waitForSpinnerToDisappear();
+        smbReviewPage.wait(smbReviewPage.getBusinessInfoPageModel().startApplicationButton);
+        browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getBusinessInfoPageModel().startApplicationButton);
+        browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), smbReviewPage.getBusinessInfoPageModel().startApplicationButton);
+        log.info("after start button  click");
+        Thread.sleep(1000);
+    }
+    @And(": I accepting extra disclosure for Smb")
+   @SneakyThrows
+    public void iAcceptingExtraDisclosureForSmb() {
+        log.info("Before you begin disclosure");
+        smbReviewPage.waitForSpinnerToDisappear();
+        Thread.sleep(1000);
+        smbReviewPage.wait(smbReviewPage.getSmbGettingStartedPageModel().extradisc);
+        browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getSmbGettingStartedPageModel().extradisc);
+        Thread.sleep(1000);
+        browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), smbReviewPage.getSmbGettingStartedPageModel().extradisc);
+        log.info("Before you begin disclosure Accepted");
+        Thread.sleep(1000);
+
+        log.info("Before you begin disclosure Proceed button");
+        smbReviewPage.waitForSpinnerToDisappear();
+        Thread.sleep(1000);
+        smbReviewPage.wait(smbReviewPage.getSmbGettingStartedPageModel().ProceedButton);
+        Thread.sleep(1000);
+        browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getSmbGettingStartedPageModel().ProceedButton);
+        Thread.sleep(1000);
+        browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), smbReviewPage.getSmbGettingStartedPageModel().ProceedButton);
+        log.info("Clicked on Proceed button");
+        Thread.sleep(1000);
+
+
+    }
+
+    @And(": I should navigate to business details personal page")
+    public void iShouldNavigateToBusinessDetailsPersonalPage() throws InterruptedException {
+        smbReviewPage.waitForSpinnerToDisappear();
+        log.info(" i am on business info page");
+        assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("Business"));
+        log.info(" business info page validated");
+    }
     @When(": I provide the below business personal details for {string}")
     public void businesspersonalDetails(String submissionId) throws Throwable {
         smbReviewPage.waitForSpinnerToDisappear();
@@ -73,7 +128,7 @@ public class SmbPersonalPageStepDefinition {
                 stepData.setValidation(validation);
                 person.setValidation(stepData.getValidation());
                 stepData.setPerson(person);
-                smbReviewPage.addApplicantForSMB(person, 0);
+//                smbReviewPage.addApplicantForSMB(person, 0);
                 log.info("Personal Information added for submissionId: " + submissionId);
                 break;
             }
@@ -108,15 +163,15 @@ public class SmbPersonalPageStepDefinition {
             Thread.sleep(1000);
             smbReviewPage.waitForSpinnerToDisappear();
 
-            String pageSource = seleniumdriver.getWebDriver().getPageSource();
-            String textToCheck = "Proceed without prefill";
-            if (pageSource.contains(textToCheck)) {
-                browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getSmbPersonalInfoPageModel().proceedWithoutPrefillBtn);
-                smbReviewPage.waitWithSpinner(smbReviewPage.getSmbPersonalInfoPageModel().proceedWithoutPrefillBtn);
-                browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbPersonalInfoPageModel().proceedWithoutPrefillBtn);
-                log.info("Clicked on Proceed Without prefill");
-                smbReviewPage.waitForSpinnerToDisappear();
-            }
+//            String pageSource = seleniumdriver.getWebDriver().getPageSource();
+//            String textToCheck = "Proceed without prefill";
+//            if (pageSource.contains(textToCheck)) {
+//                browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getSmbPersonalInfoPageModel().proceedWithoutPrefillBtn);
+//                smbReviewPage.waitWithSpinner(smbReviewPage.getSmbPersonalInfoPageModel().proceedWithoutPrefillBtn);
+//                browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbPersonalInfoPageModel().proceedWithoutPrefillBtn);
+//                log.info("Clicked on Proceed Without prefill");
+//                smbReviewPage.waitForSpinnerToDisappear();
+//            }
 
             JSONObject jsonObject = new JSONObject(row);
             ObjectMapper objectMapper = new ObjectMapper();
@@ -130,7 +185,7 @@ public class SmbPersonalPageStepDefinition {
             person.setValidation(validation);
             stepData.setPerson(person);
 
-            smbReviewPage.addApplicantsForSmb(person, targetIndex+1);
+//            smbReviewPage.addApplicantsForSmb(person, targetIndex+1);
             DataCSVExtractor.applicantCount++;
             currentIndex++;
             log.info("Added applicant index: " + targetIndex);
@@ -149,21 +204,6 @@ public class SmbPersonalPageStepDefinition {
         browserActions.clickApply(seleniumdriver.getWebDriver(), smbReviewPage.getSmbPersonalInfoPageModel().personalInfoNextButon);
     }
 
-    @And(": I should navigate to business details personal page")
-    public void iShouldNavigateToBusinessDetailsPersonalPage() throws InterruptedException {
-        smbReviewPage.waitForSpinnerToDisappear();
-        log.info(" i am on business info page");
-        assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("Business"));
-        log.info(" business info page validated");
-    }
 
-    @And(": I click on start Application for smb")
-    public void iClickOnStartApplicationForSmb() {
-        log.info("after start button  click");
-        smbReviewPage.waitForSpinnerToDisappear();
-        smbReviewPage.wait(smbReviewPage.getBusinessInfoPageModel().startApplicationButton);
-        browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getBusinessInfoPageModel().startApplicationButton);
-        browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), smbReviewPage.getBusinessInfoPageModel().startApplicationButton);
-        log.info("after start button  click");
-    }
+
 }

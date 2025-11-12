@@ -105,7 +105,11 @@ public class SmbBasePage {
     public SmbAccountDetailsPageModel getSmbAccountDetailsPageModel() {
         return getSeleniumdriver().getWebApplication(getWebBrowserType()).getModel(SmbAccountDetailsPageModel.class);
     }
-
+    public void innerWsfsWait(){
+        this.seleniumdriver = getSeleniumdriver();
+        this.wait = new WebDriverWait(seleniumdriver.getWebDriver(), Duration.ofSeconds(120));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loading-indicator']")));
+    }
     public SmbFundingPageModel getSmbFundingPageModel() {
         return getSeleniumdriver().getWebApplication(getWebBrowserType()).getModel(SmbFundingPageModel.class);
     }

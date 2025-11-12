@@ -71,34 +71,34 @@ public class PersonalInfoPageModel {
     
     @FindBy(xpath = PersonalInfoPageXpath.CITIZENSHIPALIENAPPLY)
     public WebElement citizenshipAlienApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.CITIZENSHIPCITIZENOPTAPPLY)
     public WebElement citizenshipCitizenOptApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.STATEOPTAPPLY)
     public WebElement stateOptApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.PREFERREDCONTACTMOBILEAPPLY)
     public WebElement preferredContactMobileApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.EMPLOYMENTEMPLOYEDAPPLY)
     public WebElement employmentEmployedApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.IDTYPEMILITARYAPPLY)
     public WebElement idTypeMilitaryApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.IDTYPEDRIVERLICENCEAPPLY)
     public WebElement idTypeDriverLicenceApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.IDTYPESTATEIDAPPLY)
     public WebElement idTypeStateIdApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.IDTYPEPASSPORTAPPLY)
     public WebElement idTypePassportApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.IDTYPERESIDENTALIENAPPLY)
     public WebElement idTypeResidentAlienApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.PERSONALINFONEXTBUTTON)
     public WebElement personalInfoNextButton;
 
@@ -107,23 +107,23 @@ public class PersonalInfoPageModel {
 
     @FindBy(xpath = PersonalInfoPageXpath.CANCELBUTTON)
     public WebElement CancelButton;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.ADDADDITIONALAPPLICANTBUTTON)
     public WebElement addAdditionalApplicantButton;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.PROCEEDWITHOUTPREFILLBTN)
     public WebElement proceedWithoutPrefillBtn;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.CITIZENSHIPCOUNTRYAPPLY)
     public WebElement citizenshipCountryApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.WILLINGFREIGNAPPLY)
     public WebElement willingFreignApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.STATEAPPLY)
     public WebElement stateApply;
-    
+
     @FindBy(xpath = PersonalInfoPageXpath.CHECKBOX)
     public WebElement checkbox;
-    
+//
 }

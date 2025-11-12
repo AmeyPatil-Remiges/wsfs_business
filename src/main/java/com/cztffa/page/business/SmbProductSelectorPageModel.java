@@ -13,16 +13,10 @@ public class SmbProductSelectorPageModel {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = SmbProductSelectorPageXpath.CLICKBUSINESSTAB)
-    public WebElement clickBusinessTab;
+    @FindBy(xpath = SmbProductSelectorPageXpath.BUSINESS)
+    public WebElement Business;
     
-    @FindBy(xpath = SmbProductSelectorPageXpath.CHECKOUTBTN)
-    public WebElement checkOutBtn;
-    
-    @FindBy(xpath = SmbProductSelectorPageXpath.PROCEEDBTN)
-    public WebElement proceedBtn;
-    
-    @FindBy(xpath = SmbProductSelectorPageXpath.PROCEEDWITHOUTPREFILLBTN)
-    public WebElement proceedWithoutPrefillBtn;
+    @FindBy(xpath = SmbProductSelectorPageXpath.CHECKOUT)
+    public WebElement checkout;
     
 }

@@ -13,18 +13,13 @@ public class SmbReviewPageModel {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = SmbReviewPageXpath.TERMANDCONDITIONS)
-    public WebElement termAndConditions;
+    @FindBy(xpath = SmbReviewPageXpath.DISCLOSURECHECKBOX)
+    public WebElement disclosureCheckbox;
+    
+    @FindBy(xpath = SmbReviewPageXpath.BRACCEPT)
+    public WebElement brAccept;
     
     @FindBy(xpath = SmbReviewPageXpath.SUBMITBUTTON)
     public WebElement submitButton;
-    
-    @FindBy(xpath = SmbReviewPageXpath.SUCCESSMSG)
-    public WebElement successMsg;
-    
-    @FindBy(xpath = SmbReviewPageXpath.ISREQUIREDERROR)
-    public WebElement isRequiredError;
-    
-    public String disclosureCheckbox = "//div[@t-model='Disclosures__r.%s']//tf-checkbox//input";
     
 }

@@ -13,6 +13,9 @@ public class SmbGettingStartedPageModel {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(xpath = SmbGettingStartedPageXpath.OFFERCODE)
+    public WebElement offerCode;
+    
     @FindBy(xpath = SmbGettingStartedPageXpath.FIRSTNAME)
     public WebElement firstName;
     
@@ -28,7 +31,13 @@ public class SmbGettingStartedPageModel {
     @FindBy(xpath = SmbGettingStartedPageXpath.ACCEPTPOLICY)
     public WebElement acceptPolicy;
     
-    @FindBy(xpath = SmbGettingStartedPageXpath.ACCEPTBTN)
-    public WebElement acceptBtn;
+    @FindBy(xpath = SmbGettingStartedPageXpath.STARTAPPLICATIONBUTTON)
+    public WebElement startApplicationButton;
+    
+    @FindBy(xpath = SmbGettingStartedPageXpath.EXTRADISC)
+    public WebElement extradisc;
+    
+    @FindBy(xpath = SmbGettingStartedPageXpath.PROCEEDBUTTON)
+    public WebElement ProceedButton;
     
 }

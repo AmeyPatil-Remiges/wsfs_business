@@ -1,12 +1,15 @@
 package com.cztffa.cucumber.parallel.smb;
 
 import com.cztffa.browseractions.BrowserActions;
+import com.cztffa.dataproviders.DataCSVExtractor;
 import com.cztffa.driver.SeleniumDriver;
 import com.cztffa.objects.StepData;
 import com.cztffa.page.review.SmbReviewPage;
+import com.cztffa.xpath.consumer.Product;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,7 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
+
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 
@@ -58,22 +65,60 @@ public class SmbHomePageStepDefinition {
         Thread.sleep(3000);
         smbReviewPage.waitForSpinnerToDisappear();
         smbReviewPage.waitForSpinnerToDisappear();
-        smbReviewPage.waitWithSpinner(smbReviewPage.getSmbProductSelectorPageModel().clickBusinessTab);
-        browserActions.clickButton(seleniumdriver,smbReviewPage.getSmbProductSelectorPageModel().clickBusinessTab);
+        smbReviewPage.waitWithSpinner(smbReviewPage.getSmbProductSelectorPageModel().Business);
+        browserActions.clickButton(seleniumdriver,smbReviewPage.getSmbProductSelectorPageModel().Business);
     }
 
-    @Then(": I should navigate to getting started page for smb")
-    public void iShouldNavigateToGettingStartedPageForSmb() throws InterruptedException {
+//    @Then(": I click on product for {string}")
+//    public void iClickOnProduct(String submissionId) throws Throwable {
+//        if (seleniumdriver.getWebDriver().getPageSource().contains("Checkout")) {
+//            List<Map<?, ?>> productDataStore = DataCSVExtractor.productDataStore;
+//
+//            log.info("Clicking all products for submissionId: " + submissionId);
+//            for (Map<?, ?> map : productDataStore) {
+//                String rowSubmissionId = map.get("submissionId").toString().trim();
+//                if (!rowSubmissionId.equals(submissionId)) continue;
+//                String product = map.get("product").toString().trim();
+//                String xpath = Product.getByName(product).getXpath();
+//                smbReviewPage.wait(xpath);
+//                WebElement element = browserActions.findElement(seleniumdriver, By.xpath(xpath));
+//                browserActions.scrollToWebElement(seleniumdriver, element);
+//                smbReviewPage.waitWithSpinner(element);
+//                browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), element);
+//                log.info("Clicked product: " + product);
+//            }
+//            Thread.sleep(2000);
+//            //smbReviewPage.spinner();
+//            Thread.sleep(2000);
+//        }
+//    }
 
-        log.info("Before getting started page");
-        Thread.sleep(1000);
-        smbReviewPage.waitForSpinnerToDisappear();
-        assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("Personal Information"));
-        log.info("On getting started page");
+//    @And("^: I click on the checkout$")
+//    public void iClickOnTheCheckout() throws Throwable {
+//        if (seleniumdriver.getWebDriver().getPageSource().contains("Checkout")) {
+//            log.info("Before click of checkout btn");
+//            smbReviewPage.wait(smbReviewPage.getSmbProductSelectorPageModel().checkout);
+//            browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getSmbProductSelectorPageModel().checkout);
+//            Thread.sleep(1000);
+//            browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbProductSelectorPageModel().checkout);
+//            log.info("On click of checkout btn");
+//            Thread.sleep(1000);
+//            //smbReviewPage.spinner();
+//
+//        }
+//    }
 
+//    @Then(": I click on proceed without prefill")
+//    public void iClickOnProceedWithoutPrefill() throws InterruptedException {
+//
+//    }
+
+    @Then("^: I should see foundation radio button validation msg$")
+    public void iShouldSeeFoundationValidationMsg() throws Throwable {
+        //assertTrue(reviewPage.getReviewPageModel().isRequiredError.isDisplayed());
     }
 
-    @After("@SMBFlow")
+    @After()
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) seleniumdriver.getWebDriver())
@@ -85,5 +130,11 @@ public class SmbHomePageStepDefinition {
         log.info("Status of the scenario {} ", scenario.getStatus());
         seleniumdriver.getWebDriver().quit();
     }
+
+    @Then("^: I should see product page validation msg$")
+    public void iShouldSeeProductPageValidationMsg() throws Throwable {
+        //assertTrue(reviewPage.getReviewPageModel().isRequiredError.isDisplayed());
+    }
+
 
 }

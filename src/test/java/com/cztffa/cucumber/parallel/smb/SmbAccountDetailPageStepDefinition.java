@@ -27,19 +27,19 @@ public class SmbAccountDetailPageStepDefinition {
         log.info("i am on account details page");
         assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("Business"));
     }
-    @Then("^: I should fill up the account details page$")
-    public void fillAccountDetails() throws Throwable {
-        smbReviewPage.fillAccountDetails();
-    }
+//    @Then("^: I should fill up the account details page$")
+//    public void fillAccountDetails() throws Throwable {
+//        smbReviewPage.fillAccountDetails();
+//    }
 
     @Then("^: I click on account details next page$")
     public void clickAccountDetailNextButton() throws Throwable {
         smbReviewPage.letSpinnerDisappear();
-        smbReviewPage.waitAndScrollToVisibleElement(seleniumdriver.getWebDriver(),smbReviewPage.getSmbAccountDetailsPageModel().accountDetailsNextButon);
-        browserActions.scrollToWebElement(seleniumdriver,smbReviewPage.getSmbAccountDetailsPageModel().accountDetailsNextButon);
-        smbReviewPage.waitUntilVisibleAndClickable(seleniumdriver.getWebDriver(),smbReviewPage.getSmbAccountDetailsPageModel().accountDetailsNextButon);
-        smbReviewPage.waitWithSpinner(smbReviewPage.getSmbAccountDetailsPageModel().accountDetailsNextButon);
-        browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), smbReviewPage.getSmbAccountDetailsPageModel().accountDetailsNextButon);
+        smbReviewPage.waitAndScrollToVisibleElement(seleniumdriver.getWebDriver(),smbReviewPage.getSmbAccountDetailsPageModel().AccountDetailsNextButton);
+        browserActions.scrollToWebElement(seleniumdriver,smbReviewPage.getSmbAccountDetailsPageModel().AccountDetailsNextButton);
+        smbReviewPage.waitUntilVisibleAndClickable(seleniumdriver.getWebDriver(),smbReviewPage.getSmbAccountDetailsPageModel().AccountDetailsNextButton);
+        smbReviewPage.waitWithSpinner(smbReviewPage.getSmbAccountDetailsPageModel().AccountDetailsNextButton);
+        browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), smbReviewPage.getSmbAccountDetailsPageModel().AccountDetailsNextButton);
         smbReviewPage.waitForSpinnerToDisappear();
     }
 }

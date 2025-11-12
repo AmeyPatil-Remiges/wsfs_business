@@ -53,29 +53,33 @@ public class SmbProductSelectorStepDefinition {
         public void iClickOnTheCheckoutForSmb() throws InterruptedException {
             smbReviewPage.waitForSpinnerToDisappear();
             log.info("On click of checkout btn");
-            smbReviewPage.waitWithSpinner(smbReviewPage.getSmbProductSelectorPageModel().checkOutBtn);
-            browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbProductSelectorPageModel().checkOutBtn);
+            smbReviewPage.waitWithSpinner(smbReviewPage.getSmbProductSelectorPageModel().checkout);
+            Thread.sleep(5000);
+            browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getSmbProductSelectorPageModel().checkout);
+            Thread.sleep(1000);
+            browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbProductSelectorPageModel().checkout);
+            Thread.sleep(5000);
             log.info("After click of checkout btn");
             smbReviewPage.waitForSpinnerToDisappear();
-            smbReviewPage.waitWithSpinner(smbReviewPage.getSmbProductSelectorPageModel().proceedBtn);
-            browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbProductSelectorPageModel().proceedBtn);
+//            smbReviewPage.waitWithSpinner(smbReviewPage.getSmbProductSelectorPageModel().proceedBtn);
+//            browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbProductSelectorPageModel().proceedBtn);
             log.info("After click of proceed btn");
         }
 
 
 
-    @Then(": I click on proceed without prefill for smb")
-    public void iClickOnProceedWithoutPrefillForSmb() {
-        log.info("Before clicking on proceed without prefill button");
-        smbReviewPage.waitForSpinnerToDisappear();
-        WebElement proceedBtn = smbReviewPage.getSmbProductSelectorPageModel().proceedWithoutPrefillBtn;
-        WebDriverWait wait = new WebDriverWait(seleniumdriver.getWebDriver(), Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOf(proceedBtn));
-        wait.until(ExpectedConditions.elementToBeClickable(proceedBtn));
-        log.info("Waited till proceedWithoutPrefillBtn");
-        browserActions.scrollToWebElement(seleniumdriver, proceedBtn);
-        smbReviewPage.wait(proceedBtn);
-        browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), proceedBtn);
-        log.info("After clicking on proceed without prefill button");
-    }
+//    @Then(": I click on proceed without prefill for smb")
+//    public void iClickOnProceedWithoutPrefillForSmb() {
+//        log.info("Before clicking on proceed without prefill button");
+//        smbReviewPage.waitForSpinnerToDisappear();
+//        WebElement proceedBtn = smbReviewPage.getSmbProductSelectorPageModel().proceedWithoutPrefillBtn;
+//        WebDriverWait wait = new WebDriverWait(seleniumdriver.getWebDriver(), Duration.ofSeconds(20));
+//        wait.until(ExpectedConditions.visibilityOf(proceedBtn));
+//        wait.until(ExpectedConditions.elementToBeClickable(proceedBtn));
+//        log.info("Waited till proceedWithoutPrefillBtn");
+//        browserActions.scrollToWebElement(seleniumdriver, proceedBtn);
+//        smbReviewPage.wait(proceedBtn);
+//        browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), proceedBtn);
+//        log.info("After clicking on proceed without prefill button");
+//    }
 }

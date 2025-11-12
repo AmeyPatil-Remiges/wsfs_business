@@ -73,9 +73,9 @@ public class FundingPage extends AccountDetailsPage {
 				browserActions.scrollToWebElement(getSeleniumdriver(), getFundingPageModel().routingNumber);
 				Thread.sleep(1000);
 				log.info("Entering Funding Bank's ABA Routing Number");
-				browserActions.enterTextKeyEntry(getSeleniumdriver(), getFundingPageModel().routingNumber, funding.getRoutingNumber());
-				log.info("Entering Funding Bank Account Number");
-				browserActions.enterTextKeyEntry(getSeleniumdriver(), getFundingPageModel().accountNumber, funding.getAccountNumber());
+//				browserActions.enterTextKeyEntry(getSeleniumdriver(), getFundingPageModel().routingNumber, funding.getRoutingNumber());
+//				log.info("Entering Funding Bank Account Number");
+//				browserActions.enterTextKeyEntry(getSeleniumdriver(), getFundingPageModel().accountNumber, funding.getAccountNumber());
 				log.info("Selecting account type as checking");
 				browserActions.clickButton(getSeleniumdriver(), getFundingPageModel().accountChecking);
 			}
