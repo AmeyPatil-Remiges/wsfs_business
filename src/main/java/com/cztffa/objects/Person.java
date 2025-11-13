@@ -12,7 +12,7 @@ public class Person {
 	private String firstName;
     private String year;
 	private String lastName;
-
+    private String percentage;
 	private String middleName;
 
 	private String phoneNumber;

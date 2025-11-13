@@ -28,8 +28,8 @@ public class SmbMemberDiligencePageStepDefinition {
 
         log.info("i am on Due dillegence page");
         smbReviewPage.letSpinnerDisappear();
-        smbReviewPage.waitForVisibilityWithLoader("//*[contains(text(),'We need some additional information')]");
-        assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("Business"));
+        smbReviewPage.waitForVisibilityWithLoader("//*[contains(text(),'GENERAL INFORMATION')]");
+        assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("GENERAL INFORMATION"));
     }
 
     @When("^: I provide below due diligence details$")
@@ -43,6 +43,9 @@ public class SmbMemberDiligencePageStepDefinition {
         browserActions.scrollToWebElement(seleniumdriver,smbReviewPage.getMemberDiligencePageModel().personalInfoNextButon);
         smbReviewPage.waitWithSpinner(smbReviewPage.getMemberDiligencePageModel().personalInfoNextButon);
         browserActions.clickButton(seleniumdriver, smbReviewPage.getMemberDiligencePageModel().personalInfoNextButon);
+        smbReviewPage.waitForSpinnerToDisappear();
+        Thread.sleep(2000);
+
     }
 
 

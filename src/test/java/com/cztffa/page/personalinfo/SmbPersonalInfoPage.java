@@ -49,7 +49,7 @@ public class SmbPersonalInfoPage extends BusinessInfoPage {
 //    }
 //
 
-    public WebElement element (String xpath,int index){
+    public WebElement element(String xpath, int index) {
         ApplicantUtil applicantUtil = new ApplicantUtil();
         return applicantUtil.getWebElement(getSeleniumdriver(), xpath, index);
     }
@@ -120,9 +120,9 @@ public class SmbPersonalInfoPage extends BusinessInfoPage {
 
         log.info("Entering year");
         WebElement year = applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().year, index);
-        browserActions.scrollToWebElement(getSeleniumdriver(),year);
+        browserActions.scrollToWebElement(getSeleniumdriver(), year);
         Thread.sleep(500);
-        browserActions.scrollToWebElement(getSeleniumdriver(),year);
+        browserActions.scrollToWebElement(getSeleniumdriver(), year);
         Thread.sleep(500);
         browserActions.enterText(getSeleniumdriver(), applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().year, index),
                 person.getYear());
@@ -234,7 +234,7 @@ public class SmbPersonalInfoPage extends BusinessInfoPage {
 
         waitWithSpinner(getSmbPersonalInfoPageModel().personalInfoNextButon);
         waitForSpinnerToDisappear();
-        browserActions.scrollToWebElement(getSeleniumdriver(),getSmbPersonalInfoPageModel().personalInfoNextButon);
+        browserActions.scrollToWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().personalInfoNextButon);
         waitWithSpinner(getSmbPersonalInfoPageModel().personalInfoNextButon);
         browserActions.clickApply(getSeleniumdriver().getWebDriver(), getSmbPersonalInfoPageModel().personalInfoNextButon);
         log.info("clicked on Personal info");
@@ -243,51 +243,83 @@ public class SmbPersonalInfoPage extends BusinessInfoPage {
 
         waitWithSpinner(getSmbPersonalInfoPageModel().saveModalContinueButton);
         waitForSpinnerToDisappear();
-        browserActions.scrollToWebElement(getSeleniumdriver(),getSmbPersonalInfoPageModel().saveModalContinueButton);
+        browserActions.scrollToWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().saveModalContinueButton);
         waitWithSpinner(getSmbPersonalInfoPageModel().saveModalContinueButton);
         browserActions.clickApply(getSeleniumdriver().getWebDriver(), getSmbPersonalInfoPageModel().saveModalContinueButton);
         log.info("clicked on Personal info");
         Thread.sleep(2000);
         waitForSpinnerToDisappear();
 
+        if (index == 0) {
+            browserActions.scrollToWebElement(getSeleniumdriver(), applicantUtil.getWebElement(getSeleniumdriver(),getSmbPersonalInfoPageModel().RELATION, index));
+            WebElement relationCode = applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().RELATION, index);
+            wait(relationCode);
+            browserActions.clickApply(getSeleniumdriver().getWebDriver(),
+                    applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().RELATION, index));
+            browserActions.enterText(getSeleniumdriver(),
+                    applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().RELATION, index),
+                    person.getRelationship());
+            WebElement relationSelect = applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().RelationionshipOfPerson, person.getRelationship());
+            browserActions.scrollToWebElement(getSeleniumdriver(), relationSelect);
+            waitWithSpinner(relationSelect);
+            browserActions.clickApply(getSeleniumdriver().getWebDriver(), relationSelect);
+
+            Thread.sleep(1000);
+            log.info("is BO checkbox");
+            WebElement isBo = applicantUtil.getWebElement(getSeleniumdriver(),getSmbPersonalInfoPageModel().ISBO, index);
+            Thread.sleep(500);
+            browserActions.scrollToWebElement(getSeleniumdriver(), isBo);
+            Thread.sleep(500);
+            browserActions.clickButton(getSeleniumdriver(), isBo);
+            log.info("is BO checkbox selected");
+
+            Thread.sleep(1000);
+            log.info("Entering Relationship percentage if existed entered");
+
+            WebElement percentage = applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().OWNERSHIPPERCENTAGE, index);
+            browserActions.scrollToWebElement(getSeleniumdriver(), percentage);
+            Thread.sleep(500);
+            browserActions.scrollToWebElement(getSeleniumdriver(), percentage);
+            Thread.sleep(500);
+            browserActions.enterText(getSeleniumdriver(), applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().OWNERSHIPPERCENTAGE, index),
+                    person.getPercentage());
+            assertTrue(true);
+
+
+            Thread.sleep(1000);
+            log.info("is signer");
+            WebElement isSigner = applicantUtil.getWebElement(getSeleniumdriver(),getSmbPersonalInfoPageModel().ISSIGNERONACCOUNT, index);
+            Thread.sleep(500);
+            browserActions.scrollToWebElement(getSeleniumdriver(), isSigner);
+            Thread.sleep(500);
+            browserActions.clickButton(getSeleniumdriver(), isSigner);
+            log.info("is signer checkbox selected");
+
+            Thread.sleep(1000);
+            log.info("Relationship page disclosure");
+            WebElement RPDisc = applicantUtil.getWebElement(getSeleniumdriver(),getSmbPersonalInfoPageModel().RELATIONSHIPDISC, index);
+            Thread.sleep(500);
+            browserActions.scrollToWebElement(getSeleniumdriver(), RPDisc);
+            Thread.sleep(500);
+            browserActions.clickButton(getSeleniumdriver(), RPDisc);
+            log.info("Relationship page disclosure selected");
 
 
 
-    }
-
-//
 
 
-//
-//        if(index==0) {
-//            browserActions.scrollToWebElement(getSeleniumdriver(), applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().selectRelation, index));
-//            WebElement relationCode = applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().selectRelation, index);
-//            wait(relationCode);
-//            browserActions.clickApply(getSeleniumdriver().getWebDriver(),
-//                    applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().selectRelation, index));
-//            browserActions.enterText(getSeleniumdriver(),
-//                    applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().selectRelation, index),
-//                    person.getRelationship());
-//                WebElement relationSelect = applicantUtil.getWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().getRelationionshipOfPerson, person.getRelationship());
-//                browserActions.scrollToWebElement(getSeleniumdriver(),relationSelect);
-//            waitWithSpinner(relationSelect);
-//                browserActions.clickApply(getSeleniumdriver().getWebDriver(),relationSelect);
-//
-//                log.info("Entering Relationship percentage if existed entered");
-//            if(person.getRelationship().equalsIgnoreCase("Owner")) {
+//            if (person.getRelationship().equalsIgnoreCase("Owner")) {
 //                DataCSVExtractor.ownerCount++;
 //                log.info("Owner Count");
 //                wait(getSmbPersonalInfoPageModel().percentage);
 //                log.info("Relationship selected");
-//                browserActions.scrollToWebElement(getSeleniumdriver(),getSmbPersonalInfoPageModel().percentage);
+//                browserActions.scrollToWebElement(getSeleniumdriver(), getSmbPersonalInfoPageModel().percentage);
 //                wait(getSmbPersonalInfoPageModel().percentage);
 //                browserActions.enterTextKeyEntry(getSeleniumdriver(), getSmbPersonalInfoPageModel().percentage, person.getOwnershipPercentage());
 //            }
-//        }
-//    }
-
-
-        public void addApplicantsForSmb (Person person,int index) throws InterruptedException {
+        }
+    }
+            public void addApplicantsForSmb (Person person,int index) throws InterruptedException {
             getSeleniumdriver().getWebDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             ApplicantUtil applicantUtil = new ApplicantUtil();
             Validation validation = person.getValidation();

@@ -7,8 +7,10 @@ import com.cztffa.objects.Funding;
 import com.cztffa.page.review.SmbReviewPage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
@@ -34,9 +36,32 @@ public class SmbFundingPageStepDefinition {
     @And("^: I should see the business funding page$")
     public void navigateToBusinessFundingPage() throws Throwable {
         smbReviewPage.letSpinnerDisappear();
-        assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("Business"));
+        assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("How would you like to fund your account"));
     }
+    @SneakyThrows
+    @Then(": I provide below funding amount for smb for {string}")
+    public void iProvideBelowFundingAmountForSmbFor(String submissionId) throws Throwable {
+        if (seleniumdriver.getWebDriver().getPageSource().contains("Amount")) {
 
+            List<Map<?, ?>> fundingList = DataCSVExtractor.fundingDataStore;
+            int index = 0;
+            ObjectMapper objectMapper = new ObjectMapper();
+            for (int i = 0; i < fundingList.size(); i++) {
+                Map<?, ?> row = fundingList.get(i);
+                if (row.get("submissionId").equals(submissionId)) {
+                    JSONObject jsonObject = new JSONObject(row);
+                    Funding funding = objectMapper.readValue(jsonObject.toString(), Funding.class);
+                    smbReviewPage.addFundAmountForSMB(funding, index);
+                    index++;
+                    log.info("Funding amount added for Product: " + i);
+                }
+            }
+            log.info("Funding Amount Completed for submissionId: " + submissionId);
+            Thread.sleep(2000);
+//            smbReviewPage.spinner();
+            Thread.sleep(2000);
+        }
+    }
     @Then(": I provide below funding details for smb for {string}")
     public void iProvideBelowFundingDetailsForSmb(String submissionId) throws JsonProcessingException, InterruptedException {
         List<Map<?,?>> fundingList = DataCSVExtractor.smbfundingDataStore;
@@ -62,4 +87,5 @@ public class SmbFundingPageStepDefinition {
         browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), smbReviewPage.getBusinessInfoPageModel().businessInfoNextButon);
         smbReviewPage.waitForSpinnerToDisappear();
     }
+
 }

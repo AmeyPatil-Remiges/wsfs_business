@@ -46,8 +46,8 @@ public class SmbFundingPage extends SmbAccountDetailsPage {
 //			waitForInnerSpinnersToDisappear(getSeleniumdriver().getWebDriver());
 //			Thread.sleep(12000);
 //			Thread.sleep(2000);
-                waitForVisibilityWithLoader("//*[contains(text(),'Funding Details')]");
-                Thread.sleep(1000);
+//                waitForVisibilityWithLoader("//*[contains(text(),'Funding Details')]");
+//                Thread.sleep(1000);
 //			browserActions.scrollToWebElement(getSeleniumdriver(),getFundingPageModel().acknowledgePalidToggle);
 //			Thread.sleep(2000);
 //			browserActions.clickButton(getSeleniumdriver(),getFundingPageModel().acknowledgePalidToggle);
@@ -310,7 +310,7 @@ public class SmbFundingPage extends SmbAccountDetailsPage {
             log.info("Finished processing of Funding details");
         }
 
-        public void addFundAmount(Funding funding, int index) throws InterruptedException {
+        public void addFundAmountForSMB(Funding funding, int index) throws InterruptedException {
             this.seleniumdriver = getSeleniumdriver();
             WebDriver driver = seleniumdriver.getWebDriver();
             ApplicantUtil applicantUtil = new ApplicantUtil();

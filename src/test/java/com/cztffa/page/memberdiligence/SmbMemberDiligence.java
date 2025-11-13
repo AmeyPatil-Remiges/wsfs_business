@@ -38,11 +38,11 @@ public class SmbMemberDiligence extends SmbPersonalInfoPage {
 
 
 
-        Thread.sleep(1000);
+        Thread.sleep(500);
         wait(getMemberDiligencePageModel().accountUsedFor);
         browserActions.clickApply(getSeleniumdriver().getWebDriver(),
                 applicantUtil.getWebElement(getSeleniumdriver(), getMemberDiligencePageModel().accountUsedFor));
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
 //        wait(getMemberDiligencePageModel().checkDropdown);
 //        browserActions.clickApply(getSeleniumdriver().getWebDriver(), getMemberDiligencePageModel().checkDropdown);
 //        log.info("Element Selected");

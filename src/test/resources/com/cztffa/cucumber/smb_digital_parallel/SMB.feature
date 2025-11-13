@@ -24,6 +24,7 @@ Feature: Review page flow
     Then : I provide below due diligence details
     Then : I click on due diligence next button
     And : I should see the business funding page
+    Then : I provide below funding amount for smb for "<submissionId>"
     Then : I provide below funding details for smb for "<submissionId>"
     Then : I click on business funding page next button
 #    And : I should see the account detail page for Smb
