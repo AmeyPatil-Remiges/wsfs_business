@@ -7,6 +7,7 @@ import com.cztffa.page.review.SmbReviewPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.formula.functions.T;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,6 +43,8 @@ public class SmbReviewPageStepDefinition {
         browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbReviewPageModel().disclosureCheckbox);
         browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getSmbReviewPageModel().disclosureCheckbox);
 
+        WebDriver driver = seleniumdriver.getWebDriver();
+        String mainWindow = driver.getWindowHandle();
         int index = 2;
         while(true) {
             try {
@@ -54,8 +57,43 @@ public class SmbReviewPageStepDefinition {
                     log.info("Inside If");
                     browserActions.scrollToWebElement(seleniumdriver, checkbox);
                     smbReviewPage.waitWithShortTime(seleniumdriver);
-                    browserActions.clickButton(seleniumdriver,checkbox);//added
+                    browserActions.clickButton(seleniumdriver,checkbox);
+                    Thread.sleep(1000);
+                    log.info("Number of windows: " + driver.getWindowHandles().size());
                     index++;
+
+                    if(driver.getWindowHandles().size()>1){
+                        for (String windowHandle : driver.getWindowHandles()) {
+                            if (!windowHandle.equals(mainWindow)) {
+                                driver.switchTo().window(windowHandle);
+                                log.info("Switched to popup window: " + windowHandle);
+                                break;
+                            }
+                        }
+                        try {
+                            WebElement element1 = driver.findElement(By.xpath("//div[@class='tab-text' and contains(text(),'Sign')]"));
+                            browserActions.scrollToWebElement(seleniumdriver, element1);
+                            Thread.sleep(2000);
+                            browserActions.clickApply(driver, element1);
+                            Thread.sleep(2000);
+                            log.info("Selecting AdoptAndSignBtn");
+
+                            log.info("Clicking on Finish Button");
+                            browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbDisclosurePageModel().finishBtn);
+                            Thread.sleep(2000);
+                            smbReviewPage.spinner();
+                        } catch (Exception e) {
+                            Thread.sleep(3000);
+                            browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbDisclosurePageModel().acceptBtn);
+                            Thread.sleep(1000);
+                        }
+                        if (driver.getWindowHandles().contains(mainWindow)) {
+                            driver.switchTo().window(mainWindow);
+                            log.info("Switched back to main window: " + mainWindow);
+                        } else {
+                            log.error("Main window no longer exists. Cannot switch back.");
+                        }
+                    }
                 } catch (Exception e) {
                     break;
                 }

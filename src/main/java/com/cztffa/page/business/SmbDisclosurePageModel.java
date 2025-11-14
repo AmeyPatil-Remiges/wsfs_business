@@ -24,6 +24,9 @@ public class SmbDisclosurePageModel {
     
     @FindBy(xpath = SmbDisclosurePageXpath.FINISHBTN)
     public WebElement finishBtn;
+
+    @FindBy(xpath = "//button[normalize-space()='Accept']")
+    public WebElement acceptBtn;
     
     @FindBy(xpath = SmbDisclosurePageXpath.SUBMITBTN)
     public WebElement submitBtn;
