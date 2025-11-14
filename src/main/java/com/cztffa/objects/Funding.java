@@ -22,7 +22,9 @@ public class Funding {
     private String cardHolderName;
 
     private String paypalID;
+
     private String paypalPwd;
+
     private String term;
 
     private String expiryDate;

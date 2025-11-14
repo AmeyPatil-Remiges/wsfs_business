@@ -558,16 +558,6 @@ public class SmbPersonalInfoPage extends BusinessInfoPage {
 //        }
 
     }
-
-    public void clickRelationsDetailNextButtonHelper() throws InterruptedException {
-        waitForSpinnerToDisappear();
-        log.info("clicking on personalInfo Next Button");
-        waitForVisibilityWithLoader("//*[contains(text(),'Specify how the individuals')]");
-        waitWithSpinner(getSmbPersonalInfoPageModel().personalInfoNextButon);
-        browserActions.scrollToWebElement(getSeleniumdriver(),getSmbPersonalInfoPageModel().personalInfoNextButon);
-        waitWithSpinner(getSmbPersonalInfoPageModel().personalInfoNextButon);
-        browserActions.clickUsingEnter(getSeleniumdriver().getWebDriver(), getSmbPersonalInfoPageModel().personalInfoNextButon);
-    }
 //
             public void fillDetailsForSMB (Person person) throws InterruptedException {
                 waitWithSpinner(getSmbGettingStartedPageModel().firstName);

@@ -350,4 +350,8 @@ public class SmbBasePage {
         waitForSpinnerToDisappear();
     }
 
+    public void spinner()
+    {
+        waitForSpinnerToDisappear();
+    }
 }

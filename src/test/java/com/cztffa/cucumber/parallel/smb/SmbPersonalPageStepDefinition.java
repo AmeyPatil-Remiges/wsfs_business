@@ -43,7 +43,7 @@ public class SmbPersonalPageStepDefinition {
             assertTrue(seleniumdriver.getWebDriver().getPageSource().contains("New Customer"));
             log.info("On getting started page");
             Thread.sleep(1000);
-            //smbReviewPage.spinner();
+            smbReviewPage.waitForSpinnerToDisappear();
         }
     }
     @When(": I provide the following details for smb for {string}")

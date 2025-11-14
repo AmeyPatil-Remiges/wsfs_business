@@ -43,7 +43,7 @@ public class SmbFundingPageStepDefinition {
     public void iProvideBelowFundingAmountForSmbFor(String submissionId) throws Throwable {
         if (seleniumdriver.getWebDriver().getPageSource().contains("Amount")) {
 
-            List<Map<?, ?>> fundingList = DataCSVExtractor.fundingDataStore;
+            List<Map<?, ?>> fundingList = DataCSVExtractor.smbfundingDataStore;
             int index = 0;
             ObjectMapper objectMapper = new ObjectMapper();
             for (int i = 0; i < fundingList.size(); i++) {
@@ -85,6 +85,7 @@ public class SmbFundingPageStepDefinition {
         browserActions.scrollToWebElement(seleniumdriver,smbReviewPage.getBusinessInfoPageModel().businessInfoNextButon);
         smbReviewPage.waitWithSpinner(smbReviewPage.getBusinessInfoPageModel().businessInfoNextButon);
         browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), smbReviewPage.getBusinessInfoPageModel().businessInfoNextButon);
+        Thread.sleep(1000);
         smbReviewPage.waitForSpinnerToDisappear();
     }
 

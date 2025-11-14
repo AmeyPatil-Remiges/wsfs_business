@@ -35,7 +35,6 @@ public class SmbMemberDiligencePageStepDefinition {
     @When("^: I provide below due diligence details$")
     public void dueDiligenceDetails() throws Throwable {
         log.info("providing due diligence detail");
-        smbReviewPage.letSpinnerDisappear();
         smbReviewPage.completeDueDiligence();
     }
     @Then("^: I click on due diligence next button$")
@@ -43,8 +42,9 @@ public class SmbMemberDiligencePageStepDefinition {
         browserActions.scrollToWebElement(seleniumdriver,smbReviewPage.getMemberDiligencePageModel().personalInfoNextButon);
         smbReviewPage.waitWithSpinner(smbReviewPage.getMemberDiligencePageModel().personalInfoNextButon);
         browserActions.clickButton(seleniumdriver, smbReviewPage.getMemberDiligencePageModel().personalInfoNextButon);
+        Thread.sleep(1000);
         smbReviewPage.waitForSpinnerToDisappear();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
     }
 

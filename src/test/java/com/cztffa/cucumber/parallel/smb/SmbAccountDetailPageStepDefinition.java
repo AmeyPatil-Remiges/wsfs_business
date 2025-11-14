@@ -41,5 +41,6 @@ public class SmbAccountDetailPageStepDefinition {
         smbReviewPage.waitWithSpinner(smbReviewPage.getSmbAccountDetailsPageModel().AccountDetailsNextButton);
         browserActions.clickUsingEnter(seleniumdriver.getWebDriver(), smbReviewPage.getSmbAccountDetailsPageModel().AccountDetailsNextButton);
         smbReviewPage.waitForSpinnerToDisappear();
+        Thread.sleep(2000);
     }
 }

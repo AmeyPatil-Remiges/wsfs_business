@@ -31,6 +31,7 @@ Feature: Review page flow
 #    Then : I should fill up the account details page
     Then : I click on account details next page
     And : I should see the documents page
+    Then : I upload documents
     Then : I click on documents page next button
 #    Then : I should accept the all business terms and conditions 1
     And : I click on review details submit button for smb
