@@ -29,41 +29,42 @@ public class SmbReviewPageStepDefinition {
         this.browserActions = smbReviewPage.browserActions;
         this.smbReviewPage=smbReviewPage;
     }
-//    @Then("^: I should accept the all business terms and conditions (\\d+)$")
-//    public void acceptAllTermsAndConditions(int numberOfDisclosure) throws Throwable {
-//        log.info("i am at terms and condition page");
-//        smbReviewPage.waitForSpinnerToDisappear();
-//        smbReviewPage.waitForVisibilityWithLoader("//*[contains(text(),'You are almost done')]");
-//        smbReviewPage.scrollToElementWithActionPause(seleniumdriver,smbReviewPage.getSmbReviewPageModel().termAndConditions);
-//        log.info("After Scrolling");
-//        browserActions.scrollToWebElement(seleniumdriver,smbReviewPage.getSmbReviewPageModel().termAndConditions);
-//        smbReviewPage.waitWithShortTime(seleniumdriver);
-//        browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbReviewPageModel().termAndConditions);
-//        browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getSmbReviewPageModel().termAndConditions);
-//
-//        int index = 2;
-//        while(true) {
-//            try {
-//                log.info("Inside while");
-//                String termAndConditions = "(//tf-checkbox[@t-model='Accepted__c']//input)[" + index + "]";
-//                log.info(termAndConditions);
-//                WebElement checkbox;
-//                try {
-//                    checkbox = seleniumdriver.getWebDriver().findElement(By.xpath(termAndConditions));
-//                    log.info("Inside If");
-//                    browserActions.scrollToWebElement(seleniumdriver, checkbox);
-//                    smbReviewPage.waitWithShortTime(seleniumdriver);
-//                    browserActions.clickButton(seleniumdriver,checkbox);//added
-//                    index++;
-//                } catch (Exception e) {
-//                    break;
-//                }
-//            } catch (NoSuchElementException e) {
-//                log.info("No more checkboxes found. Exiting loop.");
-//                break;
-//            }
-//        }
-//    }
+    @Then("^: I should accept the all business terms and conditions (\\d+)$")
+    public void acceptAllTermsAndConditions(int numberOfDisclosure) throws Throwable {
+        log.info("i am at terms and condition page");
+        smbReviewPage.waitForSpinnerToDisappear();
+        smbReviewPage.waitForVisibilityWithLoader("//*[contains(text(),'Legal Business Name and Address')]");
+//        String termAndConditions = "(//tf-checkbox[@t-model='Accepted__c']//input)";
+        smbReviewPage.scrollToElementWithActionPause(seleniumdriver,smbReviewPage.getSmbReviewPageModel().disclosureCheckbox);
+        log.info("After Scrolling");
+        browserActions.scrollToWebElement(seleniumdriver,smbReviewPage.getSmbReviewPageModel().disclosureCheckbox);
+        smbReviewPage.waitWithShortTime(seleniumdriver);
+        browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbReviewPageModel().disclosureCheckbox);
+        browserActions.scrollToWebElement(seleniumdriver, smbReviewPage.getSmbReviewPageModel().disclosureCheckbox);
+
+        int index = 2;
+        while(true) {
+            try {
+                log.info("Inside while");
+                String termAndConditions = "(//tf-checkbox[@t-model='Accepted__c']//input)[" + index + "]";
+                log.info(termAndConditions);
+                WebElement checkbox;
+                try {
+                    checkbox = seleniumdriver.getWebDriver().findElement(By.xpath(termAndConditions));
+                    log.info("Inside If");
+                    browserActions.scrollToWebElement(seleniumdriver, checkbox);
+                    smbReviewPage.waitWithShortTime(seleniumdriver);
+                    browserActions.clickButton(seleniumdriver,checkbox);//added
+                    index++;
+                } catch (Exception e) {
+                    break;
+                }
+            } catch (NoSuchElementException e) {
+                log.info("No more checkboxes found. Exiting loop.");
+                break;
+            }
+        }
+    }
 
     @And(": I click on review details submit button for smb")
     public void iClickOnReviewDetailsSubmitButtonForSmb() throws InterruptedException {
@@ -74,11 +75,15 @@ public class SmbReviewPageStepDefinition {
         Thread.sleep(12000);
 
     }
-//    @Then(": I should see the reference Id page for final submission of smb")
-//    public void iShouldSeeTheReferenceIdPageForFinalSubmissionOfSmb() throws InterruptedException {
-//        log.info("On Reference Id page");
-//        DataCSVExtractor.smbapplicationCount++;
+    @Then(": I should see the reference Id page for final submission of smb")
+    public void iShouldSeeTheReferenceIdPageForFinalSubmissionOfSmb() throws InterruptedException {
+        log.info("On Reference Id page");
+        DataCSVExtractor.smbapplicationCount++;
 //        assertTrue(smbReviewPage.getSmbReviewPageModel().successMsg.isDisplayed());
-//        log.info("Successful executed the whole flow ");
-//    }
+        log.info("Successful executed the whole flow ");
+        Thread.sleep(2000);
+        smbReviewPage.spinner();
+        Thread.sleep(2000);
+
+    }
 }
