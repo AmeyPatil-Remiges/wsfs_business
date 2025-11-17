@@ -354,4 +354,35 @@ public class SmbBasePage {
     {
         waitForSpinnerToDisappear();
     }
+
+
+    public boolean switchToIframeIfPresent(WebDriver driver, WebElement iframe, int timeoutSeconds) {
+        try {
+            log.info("Checking frame");
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public boolean switchToAnyIframe(WebDriver driver, WebElement iframe1, WebElement iframe2, int timeoutSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+        try {
+            // Try first iframe
+            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe1));
+            return true;
+        } catch (TimeoutException e1) {
+            try {
+                // Try second iframe
+                wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe2));
+                return true;
+            } catch (TimeoutException e2) {
+                return false; // Neither iframe appeared
+            }
+        }
+    }
+
+
 }

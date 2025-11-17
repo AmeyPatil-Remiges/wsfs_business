@@ -74,14 +74,14 @@ public class SmbDocumentPageStepDefinition {
                 browserActions.scrollToWebElement(seleniumdriver, uploadBtn);
                 Thread.sleep(1000);
                 uploadBtn.click();
-                Thread.sleep(3000);
+                Thread.sleep(1000);
 
                 try {
                     // Wait for Browse button to appear inside popup
                     WebDriverWait wait = new WebDriverWait(seleniumdriver.getWebDriver(), Duration.ofSeconds(10));
                     WebElement browseInput = wait.until(ExpectedConditions.presenceOfElementLocated(
                             By.xpath("//input[@type='file' and contains(@id,'tf-file-capture')]")));
-                    Thread.sleep(4000);
+                    Thread.sleep(1000);
 
                     // Upload the file
                     if (i < files.length) {
@@ -101,11 +101,9 @@ public class SmbDocumentPageStepDefinition {
                 log.error("Error while uploading file for button " + (i + 1) + ": " + e.getMessage());
                 continue; // Skip to next iteration
             }
-
-
                 // Wait for popup to close (adjust depending on behavior)
                     smbReviewPage.waitForSpinnerToDisappear();
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
             }
             smbReviewPage.waitForSpinnerToDisappear();
             log.info("Document page next button");

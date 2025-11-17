@@ -54,24 +54,30 @@ public class SmbReviewPageStepDefinition {
                 WebElement checkbox;
                 try {
                     checkbox = seleniumdriver.getWebDriver().findElement(By.xpath(termAndConditions));
-                    log.info("Inside If");
+                    log.info("Clicking T&C " + index);
                     browserActions.scrollToWebElement(seleniumdriver, checkbox);
                     smbReviewPage.waitWithShortTime(seleniumdriver);
                     browserActions.clickButton(seleniumdriver,checkbox);
                     Thread.sleep(1000);
+                    smbReviewPage.spinner();
                     log.info("Number of windows: " + driver.getWindowHandles().size());
                     index++;
 
-                    if(driver.getWindowHandles().size()>1){
-                        for (String windowHandle : driver.getWindowHandles()) {
-                            if (!windowHandle.equals(mainWindow)) {
-                                driver.switchTo().window(windowHandle);
-                                log.info("Switched to popup window: " + windowHandle);
-                                break;
-                            }
-                        }
+//                    if(driver.getWindowHandles().size()>1){
+//                        for (String windowHandle : driver.getWindowHandles()) {
+//                            if (!windowHandle.equals(mainWindow)) {
+//                                driver.switchTo().window(windowHandle);
+//                                log.info("Switched to popup window: " + windowHandle);
+//                                break;
+//                            }
+//                        }
+
+                    if (smbReviewPage.switchToIframeIfPresent(seleniumdriver.getWebDriver(), smbReviewPage.getSmbReviewPageModel().framePlaid,10)) {
+                        // Click inside iframe
+                        log.info("Inside frame");
                         try {
-                            WebElement element1 = driver.findElement(By.xpath("//div[@class='tab-text' and contains(text(),'Sign')]"));
+                            Thread.sleep(11000);
+                            WebElement element1 = driver.findElement(By.xpath("//div[contains(text(),'Sign')]"));
                             browserActions.scrollToWebElement(seleniumdriver, element1);
                             Thread.sleep(2000);
                             browserActions.clickApply(driver, element1);
@@ -82,18 +88,15 @@ public class SmbReviewPageStepDefinition {
                             browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbDisclosurePageModel().finishBtn);
                             Thread.sleep(2000);
                             smbReviewPage.spinner();
+                            Thread.sleep(9000);
+                            smbReviewPage.spinner();
                         } catch (Exception e) {
-                            Thread.sleep(3000);
-                            browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbDisclosurePageModel().acceptBtn);
-                            Thread.sleep(1000);
+                            log.error("No sign button");
                         }
-                        if (driver.getWindowHandles().contains(mainWindow)) {
-                            driver.switchTo().window(mainWindow);
-                            log.info("Switched back to main window: " + mainWindow);
-                        } else {
-                            log.error("Main window no longer exists. Cannot switch back.");
-                        }
+                        browserActions.switchToDefaultContent(seleniumdriver);
                     }
+
+//                    }
                 } catch (Exception e) {
                     break;
                 }
@@ -102,6 +105,9 @@ public class SmbReviewPageStepDefinition {
                 break;
             }
         }
+        Thread.sleep(3000);
+        browserActions.clickButton(seleniumdriver, smbReviewPage.getSmbDisclosurePageModel().acceptBtn);
+        Thread.sleep(1000);
     }
 
     @And(": I click on review details submit button for smb")

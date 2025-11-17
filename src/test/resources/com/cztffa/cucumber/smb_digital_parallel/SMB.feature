@@ -34,7 +34,7 @@ Feature: Review page flow
     Then : I upload documents
 #    Then : I click on documents page next button
     Then : I should accept the all business terms and conditions 1
-    And : I click on signable disclosures button for smb
+#    And : I click on signable disclosures button for smb
     And : I click on review details submit button for smb
     Then : I should see the reference Id page for final submission of smb
 

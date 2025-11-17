@@ -15,6 +15,12 @@ public class SmbReviewPageModel {
 
     @FindBy(xpath = SmbReviewPageXpath.DISCLOSURECHECKBOX)
     public WebElement disclosureCheckbox;
+
+    @FindBy(xpath = "//div[contains(@class,'tf-modal-iframe')]//iframe")
+    public WebElement framePlaid;
+
+    @FindBy(xpath = "//button[normalize-space()='Accept']")
+    public WebElement framePlaidTwo;
     
     @FindBy(xpath = SmbReviewPageXpath.BRACCEPT)
     public WebElement brAccept;
