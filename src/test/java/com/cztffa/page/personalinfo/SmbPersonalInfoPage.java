@@ -15,6 +15,7 @@ import com.cztffa.util.ApplicantUtil;
 import org.openqa.selenium.*;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
@@ -307,14 +308,20 @@ public class SmbPersonalInfoPage extends BusinessInfoPage {
             log.info("is signer checkbox selected");
 
             Thread.sleep(1000);
-            Thread.sleep(3000);
-            waitWithSpinner(element(getSmbPersonalInfoPageModel().RELATIONSHIPDISC, index));
-            log.info("Relationship page disclosure" + index);
-            WebElement RPDisc = applicantUtil.getWebElement(getSeleniumdriver(),getSmbPersonalInfoPageModel().RELATIONSHIPDISC, index);
-            Thread.sleep(500);
-            browserActions.scrollToWebElement(getSeleniumdriver(), RPDisc);
-            Thread.sleep(500);
-            browserActions.clickButton(getSeleniumdriver(), RPDisc);
+            spinner();
+
+            List<WebElement> acceptButtons = getSeleniumdriver().findElements(By.xpath("//tf-checkbox[@t-model='Accepted__c']"));
+            int buttonCount = acceptButtons.size();
+            log.info("Total Buttons: " + buttonCount);
+            for (int i = 0; i < buttonCount; i++) {
+                WebElement checkingSection = acceptButtons.get(i);
+                log.info("Selecting Checking " + i);
+                browserActions.scrollToWebElement(getSeleniumdriver(), checkingSection);
+                Thread.sleep(1000);
+                browserActions.clickButton(getSeleniumdriver(), checkingSection);
+                log.info("Checkbox Selected");
+            }
+
             log.info("Relationship page disclosure selected");
 
 
